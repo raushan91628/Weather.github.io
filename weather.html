@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="box">
+        <h1 id="kks"> Find Weather Of Any Place</h1>
+        <div id="search">
+            <input id='input1' type="text" spellcheck="false" placeholder="Enter the City Name">
+            <button id="btn">Submit</button>
+        </div>
+        <div class="CityDetails">
+            <div class="img1">
+                <img id='weatherimg' src="C:\Users\kumar\Downloads\biuetooth\sunny.png" alt="sun">
+            </div>
+            <div class="temp">
+                <p id="sky"></p>
+                <h1 id="temp"></h1>
+            </div>
+            <div class="cityname">
+                
+                <h2 id="cityname">Mumbai</h2>
+            </div>
+        </div>
+        <div class="moredetails">
+            <div class="wind">
+                <img src="C:\Users\kumar\Downloads\biuetooth\wind.png">
+                <div class="winddetails">
+                    <h3>Wind</h3>
+                    <h4 id="windspeed"></h4>
+                </div>
+            </div>
+            <div class="humidity">
+                <img src="C:\Users\kumar\Downloads\biuetooth\humidity.png">
+                <div class="humiditydetails">
+                    <h3>Humidity</h3>
+                    <h4 id="humidity"></h4>
+                </div>
+            </div>
+        </div>
+        <div class="anotherDetails">
+            <div class="pressure">
+                <img src="C:\Users\kumar\Downloads\biuetooth\pressure.png">
+                <div class="pressuredetails">
+                    <h3>Pressure</h3>
+                    <h4 id="pressure"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:sans-serif;
+}
+body{
+    background-color: burlywood;
+}
+#kks
+{
+    margin-bottom: 2px;
+}
+#btn
+{
+    color: antiquewhite;
+    background-color: blue;
+}
+#btn:hover{
+    cursor: pointer;
+    background-color: red;
+}
+.box{
+    width: 90%;
+    margin: 100px auto ;
+    max-height: 900px;
+    padding: 130px 80px;
+    border: 10px solid black;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 2px 2px 12px rgb(20, 20, 20);
+    background: linear-gradient(125deg,rgb(106, 106, 245),rgb(250, 246, 247));
+}
+#temp{
+    margin: .4vh;
+}
+.temp{
+    margin: 2vh;
+}
+#search input,button{
+    border-radius: 5vh;
+    padding: 1vh 1vw;
+    margin: .7vh;
+    /* height: 32px; */
+    font-size: medium;
+    cursor: pointer;
+}
+#weatherimg{
+    width: 10vh;
+    border: 100%;
+}
+.CityDetails{
+    margin-top: 5vh;
+}
+
+.moredetails{
+    margin-top: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wind img{
+    width: 10vh;
+}
+.humidity img{
+    width: 13vh;
+}
+.pressure img{
+    width: 6vh;
+}
+.wind{
+    display: flex;
+    align-items: center;
+    margin-right: 2vw;
+}
+.humidity{
+    
+    margin-left: 2vw;
+    
+    display: flex;
+    align-items: center;
+}
+.pressure{
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    </style>
+
+
+    <script >
+        
+const temp = document.getElementById("temp");
+const cityname = document.getElementById("cityname");
+const windspeed = document.getElementById("windspeed");
+const humidity = document.getElementById("humidity");
+const sky= document.getElementById('sky');
+const pressure = document.getElementById('pressure');
+const weatherimg = document.getElementById('weatherimg');
+
+const search1 = document.getElementById("input1");
+
+
+const btn = document.getElementById("btn");
+
+const API_KEY = "4d04704af4c9b4797f221d9a5d835294";
+const API_URL =
+  "https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
+
+async function weather1(city) {
+
+  const W = await fetch(API_URL + city +  `&appid=${API_KEY}`);
+
+  const data = await W.json();
+
+  if(W.status == 404){
+       return  cityname.innerHTML = 'Invalid city name!!'
+  }
+
+  console.log(data);
+
+  cityname.innerHTML = data.name;
+  sky.innerHTML = data.weather[0].description;
+  temp.innerHTML = Math.round(data.main.temp) + "°C";
+  windspeed.innerHTML = data.wind.speed + " m/s";
+  humidity.innerHTML = data.main.humidity + " %";
+  pressure.innerHTML = data.main.pressure + ' hPa';
+
+  if(data.weather[0].main === 'Clear')
+  {
+    weatherimg.src = 'C:\Users\kumar\Downloads\biuetooth\sunny.png';
+  }
+  else if(data.weather[0].main === 'Rain')
+  {
+    weatherimg.src = 'C:\Users\kumar\Downloads\biuetooth\rain.png'
+  }
+  else if(data.weather[0].main === 'Clouds')
+  {
+    weatherimg.src = 'C:\Users\kumar\Downloads\biuetooth\cloud.png'
+  }
+  else if(data.weather[0].main === 'Few clouds')
+  {
+    weatherimg.src = 'C:\Users\kumar\Downloads\biuetooth\sun_cloud.png'
+  }
+
+}
+
+btn.addEventListener("click",()=>{
+    weather1(search1.value);
+    
+});
+
+input1.addEventListener('keyup',(e)=>{
+    if(e.key === 'Enter'){
+        weather1(search1.value);
+
+    }
+
+})
+
+    </script>
+</body>
+</html>
