@@ -1,5 +1,4 @@
-
-        *{
+ *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,6 +6,10 @@
 }
 body{
     background-color: burlywood;
+}
+#input1
+{
+    text-align: center;
 }
 #kks
 {
@@ -16,6 +19,7 @@ body{
 {
     color: antiquewhite;
     background-color: blue;
+
 }
 #btn:hover{
     cursor: pointer;
@@ -25,7 +29,7 @@ body{
     width: 90%;
     margin: 100px auto ;
     max-height: 900px;
-    padding: 130px 80px;
+    padding: 110px 80px;
     border: 10px solid black;
     border-radius: 12px;
     text-align: center;
@@ -88,4 +92,3 @@ body{
     align-items: center;
     justify-content: center;
 }
-  
