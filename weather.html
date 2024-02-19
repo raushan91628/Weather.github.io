@@ -16,7 +16,7 @@
         </div>
         <div class="CityDetails">
             <div class="img1">
-                <img id='weatherimg' src="C:\Users\kumar\Downloads\biuetooth\sunny.png" alt="sun">
+                <img id='weatherimg' src="image/sunny.png" alt="sun">
             </div>
             <div class="temp">
                 <p id="sky"></p>
@@ -24,19 +24,19 @@
             </div>
             <div class="cityname">
                 
-                <h2 id="cityname">Mumbai</h2>
+                <h2 id="cityname">New Delhi</h2>
             </div>
         </div>
         <div class="moredetails">
             <div class="wind">
-                <img src="C:\Users\kumar\Downloads\biuetooth\wind.png">
+                <img src="image/wind.png">
                 <div class="winddetails">
                     <h3>Wind</h3>
                     <h4 id="windspeed"></h4>
                 </div>
             </div>
             <div class="humidity">
-                <img src="C:\Users\kumar\Downloads\biuetooth\humidity.png">
+                <img src="image/humidity.png">
                 <div class="humiditydetails">
                     <h3>Humidity</h3>
                     <h4 id="humidity"></h4>
@@ -45,7 +45,7 @@
         </div>
         <div class="anotherDetails">
             <div class="pressure">
-                <img src="C:\Users\kumar\Downloads\biuetooth\pressure.png">
+                <img src="image/pressure.png">
                 <div class="pressuredetails">
                     <h3>Pressure</h3>
                     <h4 id="pressure"></h4>
@@ -186,19 +186,19 @@ async function weather1(city) {
 
   if(data.weather[0].main === 'Clear')
   {
-    weatherimg.src = 'C:\Users\kumar\Downloads\biuetooth\sunny.png';
+    weatherimg.src = 'image/sunny.png';
   }
   else if(data.weather[0].main === 'Rain')
   {
-    weatherimg.src = 'C:\Users\kumar\Downloads\biuetooth\rain.png'
+    weatherimg.src = 'image/rain.png'
   }
   else if(data.weather[0].main === 'Clouds')
   {
-    weatherimg.src = 'C:\Users\kumar\Downloads\biuetooth\cloud.png'
+    weatherimg.src = 'image/cloud.png'
   }
   else if(data.weather[0].main === 'Few clouds')
   {
-    weatherimg.src = 'C:\Users\kumar\Downloads\biuetooth\sun_cloud.png'
+    weatherimg.src = 'image/sun_cloud.png'
   }
 
 }
